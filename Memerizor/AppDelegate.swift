@@ -10,12 +10,19 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    var memes = [Meme]()
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        for i in 0...3 {
+            let meme = Meme(topTextFieldText: "Top Text Field \(i)", bottomTextFieldText: "Bottom Text Field \(i)", originalImage: nil, memeImage: nil)
+            memes.append(meme)
+        }
         return true
     }
 
