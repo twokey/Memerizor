@@ -37,17 +37,28 @@ class MemeTableViewController: UITableViewController {
         return memes.count
     }
 
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "memeTableViewCell", for: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> MemeTableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "memeTableViewCell", for: indexPath) as! MemeTableViewCell
 
         let meme = memes[indexPath.row]
         // Configure the cell...
-        cell.imageView?.image = meme.memeImage
-        cell.textLabel?.text = meme.topTextFieldText
-        cell.detailTextLabel?.text = meme.bottomTextFieldText
+        cell.memeImageView.image = meme.memeImage
+        cell.topTextLabel.text = meme.topTextFieldText
+        cell.bottomTextLabel.text = meme.bottomTextFieldText
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let meme = memes[indexPath.row]
+        
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "viewMemeViewController") as! ViewMemeViewController
+        
+        viewController.meme = meme
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
+        
     }
  
 
