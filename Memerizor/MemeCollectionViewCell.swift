@@ -13,7 +13,6 @@ class MemeCollectionViewCell: UICollectionViewCell {
     // MARK: - Outlets
     
     @IBOutlet weak var memeCellImageView: UIImageView?
-    @IBOutlet weak var topTextCellLabel: UILabel?
     
     
 }

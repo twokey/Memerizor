@@ -10,31 +10,30 @@ import UIKit
 
 class MemeTableViewController: UITableViewController {
     
-    var memes: [Meme]!
-
+    var memes: [Meme] {
+        return (UIApplication.shared.delegate as! AppDelegate).memes
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        memes = appDelegate.memes
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView?.reloadData()
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return memes.count
     }
 
@@ -45,8 +44,8 @@ class MemeTableViewController: UITableViewController {
         let meme = memes[indexPath.row]
         // Configure the cell...
         cell.imageView?.image = meme.memeImage
-        cell.textLabel?.text = meme.topTextFieldText!
-        cell.detailTextLabel?.text = meme.bottomTextFieldText!
+        cell.textLabel?.text = meme.topTextFieldText
+        cell.detailTextLabel?.text = meme.bottomTextFieldText
 
         return cell
     }
