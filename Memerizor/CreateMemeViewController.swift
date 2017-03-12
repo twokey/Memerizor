@@ -22,8 +22,6 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var shareMemeButton: UIBarButtonItem!
     @IBOutlet weak var takePhotoButton: UIBarButtonItem!
-    @IBOutlet weak var textStackViewTopConstrain: NSLayoutConstraint!
-    @IBOutlet weak var textStackViewBottomConstrain: NSLayoutConstraint!
     
     
     // MARK: - Lifecycle
@@ -57,31 +55,6 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
         }
     }
     
-    // MARK: - Layout management
-    
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.willTransition(to: newCollection, with: coordinator)
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            switch newCollection.verticalSizeClass {
-            case .compact:
-                goLandscapeWithCoordinator(coordinator: coordinator)
-            case .regular:
-                goPortraitWithCoordinator(coordinator: coordinator)
-            default:
-                goPortraitWithCoordinator(coordinator: coordinator)
-            }
-        }
-    }
-    
-    func goLandscapeWithCoordinator(coordinator: UIViewControllerTransitionCoordinator) {
-        textStackViewTopConstrain.constant = 35
-        textStackViewBottomConstrain.constant = 80
-    }
-    
-    func goPortraitWithCoordinator(coordinator: UIViewControllerTransitionCoordinator) {
-        textStackViewTopConstrain.constant = 110
-        textStackViewBottomConstrain.constant = 155
-    }
 
     // MARK: - Notifications
     
@@ -120,10 +93,14 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
         let userInfo = notification.userInfo
         var keyboardHeight: CGFloat = 0
         
-        if activeTextField == bottomTextField {
-            let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
-            keyboardHeight = keyboardSize.cgRectValue.height
-        }
+//        if activeTextField == bottomTextField {
+//            let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+//            keyboardHeight = keyboardSize.cgRectValue.height
+//        }
+                if bottomTextField.isFirstResponder {
+                    let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+                    keyboardHeight = keyboardSize.cgRectValue.height
+                }
         
         return keyboardHeight
     }
@@ -162,9 +139,13 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
         
         // Create Image Context with the size of memeImageView
         UIGraphicsBeginImageContext(memeImageView.frame.size)
+        print(memeImageView.frame)
+        print(view.frame)
         
         // Find origin of memeImageView in view coordinates
-        let memeImageViewOrigin = memeImageView.convert(memeImageView.frame.origin, from: view)
+        let memeImageViewOrigin = memeImageView.convert(view.frame.origin, from: nil)
+        
+        print(memeImageViewOrigin)
         
         // Draw view hierarchy from memeImageView into the context
         view.drawHierarchy(in: CGRect(x: memeImageViewOrigin.x, y: memeImageViewOrigin.y, width: view.bounds.size.width, height: view.bounds.size.height), afterScreenUpdates: true)
