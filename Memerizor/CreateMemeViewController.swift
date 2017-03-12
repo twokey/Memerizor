@@ -12,7 +12,6 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
 
     // MARK: - Properties
     
-    var activeTextField: UITextField?
     var keyboardIsUp = false
     
     // MARK: - Outlets
@@ -93,14 +92,10 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
         let userInfo = notification.userInfo
         var keyboardHeight: CGFloat = 0
         
-//        if activeTextField == bottomTextField {
-//            let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
-//            keyboardHeight = keyboardSize.cgRectValue.height
-//        }
-                if bottomTextField.isFirstResponder {
-                    let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
-                    keyboardHeight = keyboardSize.cgRectValue.height
-                }
+        if bottomTextField.isFirstResponder {
+            let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+            keyboardHeight = keyboardSize.cgRectValue.height
+        }
         
         return keyboardHeight
     }
@@ -142,10 +137,9 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
         print(memeImageView.frame)
         print(view.frame)
         
-        // Find origin of memeImageView in view coordinates
+        // Find origin of memeImageView in window coordinates
         let memeImageViewOrigin = memeImageView.convert(view.frame.origin, from: nil)
         
-        print(memeImageViewOrigin)
         
         // Draw view hierarchy from memeImageView into the context
         view.drawHierarchy(in: CGRect(x: memeImageViewOrigin.x, y: memeImageViewOrigin.y, width: view.bounds.size.width, height: view.bounds.size.height), afterScreenUpdates: true)
@@ -205,7 +199,6 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
     // MARK: - Deinitializer
     
     deinit {
-        print("Unsubscribed from all notifications")
         unsubscribeFromKeyboardNotifications()
     }
     
@@ -241,11 +234,6 @@ extension CreateMemeViewController: UITextFieldDelegate {
             }
         }
         
-        activeTextField = textField
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        activeTextField = nil
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
