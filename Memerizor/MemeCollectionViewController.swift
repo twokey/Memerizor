@@ -11,13 +11,34 @@ import UIKit
 private let reuseIdentifier = "memeCollectionViewCell"
 
 class MemeCollectionViewController: UICollectionViewController {
+    
+    
+    // MARK: - Properties
 
     var memes: [Meme] {
         return (UIApplication.shared.delegate as! AppDelegate).memes
     }
     
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
+    
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let space: CGFloat = 3.0
+        let itemsRow: CGFloat = 2.0
+        let dimension = (view.frame.size.width - ((itemsRow - 1.0) * space)) / itemsRow
+        
+        print(dimension)
+        
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.minimumLineSpacing = space
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
         
     }
     
@@ -29,10 +50,9 @@ class MemeCollectionViewController: UICollectionViewController {
     }
 
 
-    // MARK: UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -50,6 +70,18 @@ class MemeCollectionViewController: UICollectionViewController {
     
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "viewMemeViewController") as! ViewMemeViewController
+        
+        detailViewController.meme = memes[indexPath.row]
+        
+        self.navigationController?.pushViewController(detailViewController, animated: true)
+    }
+
+    
+    
+    
 
     // MARK: UICollectionViewDelegate
 

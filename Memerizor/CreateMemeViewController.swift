@@ -122,7 +122,9 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
     
     func save(memeImage: UIImage) {
         
-        let meme = Meme(topTextFieldText: topTextField.text, bottomTextFieldText: bottomTextField.text, originalImage: memeImageView.image, memeImage: memeImage)
+        let date = NSDate()
+        print(date)
+        let meme = Meme(topTextFieldText: topTextField.text, bottomTextFieldText: bottomTextField.text, originalImage: memeImageView.image, memeImage: memeImage, dateCreated: date)
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.memes.append(meme)

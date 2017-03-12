@@ -15,5 +15,6 @@ struct Meme {
     var bottomTextFieldText: String?
     var originalImage: UIImage?
     var memeImage: UIImage?
+    var dateCreated: NSDate?
 }
 
