@@ -22,7 +22,7 @@ class MemeCollectionViewController: UICollectionViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+//    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     
     // MARK: - Lifecycle
@@ -30,15 +30,15 @@ class MemeCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let space: CGFloat = 3.0
-        let itemsRow: CGFloat = 2.0
-        let dimension = (view.frame.size.width - ((itemsRow - 1.0) * space)) / itemsRow
-        
-        print(dimension)
-        
-        flowLayout.minimumInteritemSpacing = space
-        flowLayout.minimumLineSpacing = space
-        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+//        let space: CGFloat = 3.0
+//        let itemsRow: CGFloat = 2.0
+//        let dimension = (view.frame.size.width - ((itemsRow - 1.0) * space)) / itemsRow
+//        
+//        print(dimension)
+//        
+//        flowLayout.minimumInteritemSpacing = space
+//        flowLayout.minimumLineSpacing = space
+//        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
         
     }
     
