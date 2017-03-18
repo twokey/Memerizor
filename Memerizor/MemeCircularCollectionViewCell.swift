@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemeCollectionViewCell: UICollectionViewCell {
+class MemeCircularCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Outlets
     

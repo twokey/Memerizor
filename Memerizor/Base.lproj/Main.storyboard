@@ -41,7 +41,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="420"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="03m-bC-AkE" id="kWc-rx-JLb">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="419"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="420"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAw-cs-S8z">
@@ -137,14 +137,14 @@
         <!--Meme Collection View Controller-->
         <scene sceneID="iBk-cY-Opx">
             <objects>
-                <collectionViewController id="aFW-I8-aGO" userLabel="Meme Collection View Controller" customClass="MemeCollectionViewController" customModule="Memerizor" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="7Ba-kj-Zgm">
+                <collectionViewController id="aFW-I8-aGO" userLabel="Meme Collection View Controller" customClass="MemeCircularCollectionViewController" customModule="Memerizor" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="7Ba-kj-Zgm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewLayout key="collectionViewLayout" id="JO8-el-nVR" customClass="CircularCollectionViewLayout" customModule="Memerizor" customModuleProvider="target"/>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="memeCollectionViewCell" id="XYv-7k-hgz" customClass="MemeCollectionViewCell" customModule="Memerizor" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="memeCollectionViewCell" id="XYv-7k-hgz" customClass="MemeCircularCollectionViewCell" customModule="Memerizor" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -152,7 +152,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="03O-k7-jUi">
-                                            <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         </imageView>
                                     </subviews>
                                 </view>
@@ -274,7 +274,7 @@
                                 <action selector="shareMeme:" destination="rPY-E7-nyX" id="33K-Mr-ovx"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="cancel" id="9aa-Hu-Z9d">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="9aa-Hu-Z9d">
                             <connections>
                                 <action selector="cancel:" destination="rPY-E7-nyX" id="74q-rT-69g"/>
                             </connections>

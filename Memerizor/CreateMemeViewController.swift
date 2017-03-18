@@ -123,7 +123,6 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
     func save(memeImage: UIImage) {
         
         let date = NSDate()
-        print(date)
         let meme = Meme(topTextFieldText: topTextField.text, bottomTextFieldText: bottomTextField.text, originalImage: memeImageView.image, memeImage: memeImage, dateCreated: date)
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -136,8 +135,6 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
         
         // Create Image Context with the size of memeImageView
         UIGraphicsBeginImageContext(memeImageView.frame.size)
-        print(memeImageView.frame)
-        print(view.frame)
         
         // Find origin of memeImageView in window coordinates
         let memeImageViewOrigin = memeImageView.convert(view.frame.origin, from: nil)
