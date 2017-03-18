@@ -28,10 +28,6 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Get access to model
-        //let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        //memes = appDelegate.memes
-        
         // Sign up for keyboard notification
         subscribeToKeyboardNotifications()
 
@@ -92,6 +88,7 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
         let userInfo = notification.userInfo
         var keyboardHeight: CGFloat = 0
         
+        // Move view up only if user edits bottom text field
         if bottomTextField.isFirstResponder {
             let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
             keyboardHeight = keyboardSize.cgRectValue.height
@@ -100,6 +97,7 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
         return keyboardHeight
     }
 
+    
     // MARK: - text field configuration
     
     func configTextField(_ textField: UITextField) {
@@ -123,10 +121,12 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
     func save(memeImage: UIImage) {
         
         let date = NSDate()
-        print(date)
+        // Create Meme
         let meme = Meme(topTextFieldText: topTextField.text, bottomTextFieldText: bottomTextField.text, originalImage: memeImageView.image, memeImage: memeImage, dateCreated: date)
         
+        // Get access to shared model
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        // Write meme to the shared model
         appDelegate.memes.append(meme)
         
         self.dismiss(animated: true, completion: nil)
@@ -136,12 +136,9 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
         
         // Create Image Context with the size of memeImageView
         UIGraphicsBeginImageContext(memeImageView.frame.size)
-        print(memeImageView.frame)
-        print(view.frame)
         
         // Find origin of memeImageView in window coordinates
         let memeImageViewOrigin = memeImageView.convert(view.frame.origin, from: nil)
-        
         
         // Draw view hierarchy from memeImageView into the context
         view.drawHierarchy(in: CGRect(x: memeImageViewOrigin.x, y: memeImageViewOrigin.y, width: view.bounds.size.width, height: view.bounds.size.height), afterScreenUpdates: true)
@@ -190,13 +187,14 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
 
     @IBAction func cancel(_ sender: Any) {
         
-        // Clear and reset all interface
+        // Clear and reset entire interface
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
         memeImageView.image = nil
         shareMemeButton.isEnabled = false
         dismiss(animated: true, completion: nil)
     }
+    
     
     // MARK: - Deinitializer
     
@@ -228,14 +226,12 @@ extension CreateMemeViewController: UIImagePickerControllerDelegate {
 
 extension CreateMemeViewController: UITextFieldDelegate {
     
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if let text = textField.text {
             if text == "TOP" || text == "BOTTOM" {
                 textField.text = ""
             }
         }
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

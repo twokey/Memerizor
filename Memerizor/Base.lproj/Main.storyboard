@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,21 +33,20 @@
         <scene sceneID="zWi-SX-oqX">
             <objects>
                 <tableViewController id="wvA-xA-mKr" userLabel="Meme Table View Controller" customClass="MemeTableViewController" customModule="Memerizor" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="443" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Od-Kv-bK9">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="408" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Od-Kv-bK9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="memeTableViewCell" rowHeight="420" id="03m-bC-AkE" customClass="MemeTableViewCell" customModule="Memerizor" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="420"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="memeTableViewCell" rowHeight="408" id="03m-bC-AkE" customClass="MemeTableViewCell" customModule="Memerizor" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="408"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="03m-bC-AkE" id="kWc-rx-JLb">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="419"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="408"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAw-cs-S8z">
-                                            <rect key="frame" x="8" y="8" width="359" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAw-cs-S8z">
+                                            <rect key="frame" x="8" y="8" width="359" height="16"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Label">
                                                     <attributes>
@@ -57,13 +57,14 @@
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5gP-cr-4mX">
-                                            <rect key="frame" x="8" y="29" width="359" height="358"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5gP-cr-4mX">
+                                            <rect key="frame" x="8" y="24" width="359" height="359"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="5gP-cr-4mX" secondAttribute="height" multiplier="1:1" id="qer-In-Q3k"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4q-kD-anP">
-                                            <rect key="frame" x="8" y="387" width="359" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4q-kD-anP">
+                                            <rect key="frame" x="8" y="383" width="359" height="16"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="Label">
                                                     <attributes>
@@ -75,6 +76,17 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="z4q-kD-anP" secondAttribute="trailing" id="0uh-YQ-JbM"/>
+                                        <constraint firstAttribute="topMargin" secondItem="HAw-cs-S8z" secondAttribute="top" id="1qt-KT-m3S"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="z4q-kD-anP" secondAttribute="leading" id="5ot-Gp-aLE"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="5gP-cr-4mX" secondAttribute="trailing" id="HIK-5Y-Cou"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="HAw-cs-S8z" secondAttribute="leading" id="PZN-mM-t8F"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="HAw-cs-S8z" secondAttribute="trailing" id="dtT-My-QKF"/>
+                                        <constraint firstItem="5gP-cr-4mX" firstAttribute="top" secondItem="HAw-cs-S8z" secondAttribute="bottom" id="e8f-dx-czj"/>
+                                        <constraint firstItem="z4q-kD-anP" firstAttribute="top" secondItem="5gP-cr-4mX" secondAttribute="bottom" id="orb-M2-sNl"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="5gP-cr-4mX" secondAttribute="leading" id="wSO-q5-ija"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="bottomTextLabel" destination="z4q-kD-anP" id="bx1-oM-9RS"/>
@@ -282,7 +294,7 @@
                                 <action selector="shareMeme:" destination="rPY-E7-nyX" id="33K-Mr-ovx"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="cancel" id="9aa-Hu-Z9d">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="9aa-Hu-Z9d">
                             <connections>
                                 <action selector="cancel:" destination="rPY-E7-nyX" id="74q-rT-69g"/>
                             </connections>
@@ -361,6 +373,6 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wVF-zy-96d"/>
+        <segue reference="wGr-bN-5xP"/>
     </inferredMetricsTieBreakers>
 </document>
