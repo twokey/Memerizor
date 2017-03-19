@@ -21,7 +21,8 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var shareMemeButton: UIBarButtonItem!
     @IBOutlet weak var takePhotoButton: UIBarButtonItem!
-    
+    @IBOutlet weak var topTextFieldConstrain: NSLayoutConstraint!
+    @IBOutlet weak var bottomTextFieldConstrain: NSLayoutConstraint!
     
     // MARK: - Lifecycle
     
@@ -194,6 +195,30 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
         shareMemeButton.isEnabled = false
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func textFieldPan(_ sender: UIPanGestureRecognizer) {
+        
+        print(sender)
+        
+        let translation = sender.translation(in: self.view)
+    
+        guard let view = sender.view  else {
+            print("Sender \(sender) doesnt't have a view")
+            return
+        }
+        
+        switch view.tag {
+        case 0:
+            topTextFieldConstrain.constant = topTextFieldConstrain.constant - translation.y
+        case 1:
+            bottomTextFieldConstrain.constant = bottomTextFieldConstrain.constant + translation.y
+        default:
+            print("Unknown tag \(view.tag) for text field")
+        }
+        
+        sender.setTranslation(CGPoint.zero, in: self.view)
+    }
+    
     
     
     // MARK: - Deinitializer

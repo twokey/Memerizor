@@ -43,7 +43,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="408"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="03m-bC-AkE" id="kWc-rx-JLb">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="408"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="407"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAw-cs-S8z">
@@ -292,9 +292,13 @@
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="7qi-R2-bV4" userLabel="Top Text Field">
                                         <rect key="frame" x="0.0" y="96" width="375" height="48"/>
+                                        <gestureRecognizers/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="40"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="5gD-iA-WEh" appends="YES" id="2MY-cc-T6o"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -310,11 +314,15 @@
                                     <constraint firstItem="ACF-BP-4s1" firstAttribute="centerY" secondItem="JZe-no-cwJ" secondAttribute="centerY" id="urN-SN-nzL"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="i7V-5v-Sr1" userLabel="Bottom Text Field">
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="i7V-5v-Sr1" userLabel="Bottom Text Field">
                                 <rect key="frame" x="-0.5" y="473" width="375" height="48"/>
+                                <gestureRecognizers/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="40"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="uZF-nn-vNR" appends="YES" id="KkS-E3-fpc"/>
+                                </connections>
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="jMk-Sr-pgV">
                                 <rect key="frame" x="0.0" y="627" width="375" height="40"/>
@@ -366,13 +374,25 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bottomTextField" destination="i7V-5v-Sr1" id="XBq-Cm-to4"/>
+                        <outlet property="bottomTextFieldConstrain" destination="BK0-fD-Zvc" id="chv-R1-vTJ"/>
                         <outlet property="memeImageView" destination="ACF-BP-4s1" id="HXd-EG-eGW"/>
                         <outlet property="shareMemeButton" destination="7LB-Ln-kIC" id="icX-cz-xaY"/>
                         <outlet property="takePhotoButton" destination="ifq-MJ-qcy" id="pue-UK-CAT"/>
                         <outlet property="topTextField" destination="7qi-R2-bV4" id="vin-2H-CAx"/>
+                        <outlet property="topTextFieldConstrain" destination="1EM-nE-yhA" id="oLr-P4-a1a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sDA-Iz-aFu" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="5gD-iA-WEh" userLabel="Top Text Field Pan GR">
+                    <connections>
+                        <action selector="textFieldPan:" destination="rPY-E7-nyX" id="7ik-uY-kYC"/>
+                    </connections>
+                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="uZF-nn-vNR" userLabel="Bottom Text Field Pan GR">
+                    <connections>
+                        <action selector="textFieldPan:" destination="rPY-E7-nyX" id="noM-gZ-66C"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2476" y="-460.11994002998506"/>
         </scene>
