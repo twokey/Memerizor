@@ -258,7 +258,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Created Memes" id="lYM-HG-BjW">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Msb-Ok-Zvm"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Msb-Ok-Zvm">
+                            <connections>
+                                <segue destination="IMv-Rt-VaU" kind="presentation" id="QEG-dW-S7A"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="flowLayout" destination="APA-oS-cMU" id="aiP-T4-MAB"/>
@@ -458,6 +462,6 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wVF-zy-96d"/>
+        <segue reference="QEG-dW-S7A"/>
     </inferredMetricsTieBreakers>
 </document>
