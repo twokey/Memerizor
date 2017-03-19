@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "memeCollectionViewCell"
+private let reuseIdentifier = "memeCircularCollectionViewCell"
 
 class MemeCircularCollectionViewController: UICollectionViewController {
     
@@ -18,11 +18,6 @@ class MemeCircularCollectionViewController: UICollectionViewController {
     var memes: [Meme] {
         return (UIApplication.shared.delegate as! AppDelegate).memes
     }
-    
-    
-    // MARK: - Outlets
-    
-//    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     
     // MARK: - Lifecycle
