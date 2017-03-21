@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -58,11 +57,8 @@
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5gP-cr-4mX">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5gP-cr-4mX">
                                             <rect key="frame" x="8" y="24" width="359" height="359"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="5gP-cr-4mX" secondAttribute="height" multiplier="1:1" id="qer-In-Q3k"/>
-                                            </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4q-kD-anP">
                                             <rect key="frame" x="8" y="383" width="359" height="16"/>
@@ -82,10 +78,11 @@
                                         <constraint firstAttribute="topMargin" secondItem="HAw-cs-S8z" secondAttribute="top" id="1qt-KT-m3S"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="z4q-kD-anP" secondAttribute="leading" id="5ot-Gp-aLE"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="5gP-cr-4mX" secondAttribute="trailing" id="HIK-5Y-Cou"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="z4q-kD-anP" secondAttribute="bottom" id="OHr-fo-nm3"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="HAw-cs-S8z" secondAttribute="leading" id="PZN-mM-t8F"/>
+                                        <constraint firstItem="z4q-kD-anP" firstAttribute="top" secondItem="5gP-cr-4mX" secondAttribute="bottom" id="ZaB-vX-SvS"/>
+                                        <constraint firstItem="5gP-cr-4mX" firstAttribute="top" secondItem="HAw-cs-S8z" secondAttribute="bottom" id="c9u-NC-9th"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="HAw-cs-S8z" secondAttribute="trailing" id="dtT-My-QKF"/>
-                                        <constraint firstItem="5gP-cr-4mX" firstAttribute="top" secondItem="HAw-cs-S8z" secondAttribute="bottom" id="e8f-dx-czj"/>
-                                        <constraint firstItem="z4q-kD-anP" firstAttribute="top" secondItem="5gP-cr-4mX" secondAttribute="bottom" id="orb-M2-sNl"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="5gP-cr-4mX" secondAttribute="leading" id="wSO-q5-ija"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -151,21 +148,21 @@
         <scene sceneID="iBk-cY-Opx">
             <objects>
                 <collectionViewController id="aFW-I8-aGO" userLabel="Meme Collection View Controller" customClass="MemeCircularCollectionViewController" customModule="Memerizor" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="7Ba-kj-Zgm">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="7Ba-kj-Zgm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewLayout key="collectionViewLayout" id="JO8-el-nVR" customClass="CircularCollectionViewLayout" customModule="Memerizor" customModuleProvider="target"/>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="memeCircularCollectionViewCell" id="XYv-7k-hgz" customClass="MemeCircularCollectionViewCell" customModule="Memerizor" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="03O-k7-jUi">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="03O-k7-jUi">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                         </imageView>
                                     </subviews>
                                 </view>
@@ -175,6 +172,7 @@
                                     <constraint firstAttribute="trailing" secondItem="03O-k7-jUi" secondAttribute="trailing" id="sUm-8N-u7Y"/>
                                     <constraint firstItem="03O-k7-jUi" firstAttribute="top" secondItem="XYv-7k-hgz" secondAttribute="top" id="xYb-Yy-3Ty"/>
                                 </constraints>
+                                <size key="customSize" width="150" height="150"/>
                                 <connections>
                                     <outlet property="memeCellImageView" destination="03O-k7-jUi" id="pwc-7x-AbO"/>
                                 </connections>
@@ -236,7 +234,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Zw-W3-nIQ">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Zw-W3-nIQ">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         </imageView>
                                     </subviews>
@@ -409,11 +407,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0fy-0q-OGC">
-                                <rect key="frame" x="0.0" y="146" width="375" height="375"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="0fy-0q-OGC" secondAttribute="height" multiplier="1:1" id="ufC-2I-q5N"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0fy-0q-OGC">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
