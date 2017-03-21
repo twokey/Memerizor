@@ -61,6 +61,7 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
     
     func unsubscribeFromKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
     
     
@@ -158,7 +159,6 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
         // Create and set up UIImagePickerController
         let pickImageViewController = UIImagePickerController()
         pickImageViewController.delegate = self
-        pickImageViewController.allowsEditing = true
         
         // tag = 0 - camera button; tag = 1 - album button
         switch sender.tag {
@@ -188,17 +188,10 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
 
     @IBAction func cancel(_ sender: Any) {
         
-        // Clear and reset entire interface
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
-        memeImageView.image = nil
-        shareMemeButton.isEnabled = false
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func textFieldPan(_ sender: UIPanGestureRecognizer) {
-        
-        print(sender)
         
         let translation = sender.translation(in: self.view)
     
@@ -234,7 +227,7 @@ class CreateMemeViewController: UIViewController, UINavigationControllerDelegate
 extension CreateMemeViewController: UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info["UIImagePickerControllerEditedImage"] as? UIImage {
+        if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             memeImageView.image = image
         }
         dismiss(animated: true, completion: nil)

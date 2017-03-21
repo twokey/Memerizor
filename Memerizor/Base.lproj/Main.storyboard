@@ -288,14 +288,11 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="563"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ACF-BP-4s1">
-                                        <rect key="frame" x="0.0" y="94" width="375" height="375"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="563"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="ACF-BP-4s1" secondAttribute="height" multiplier="1:1" id="xAK-Ca-G1b"/>
-                                        </constraints>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="7qi-R2-bV4" userLabel="Top Text Field">
-                                        <rect key="frame" x="0.0" y="96" width="375" height="48"/>
+                                        <rect key="frame" x="0.0" y="32" width="375" height="48"/>
                                         <gestureRecognizers/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="40"/>
@@ -304,30 +301,33 @@
                                             <outletCollection property="gestureRecognizers" destination="5gD-iA-WEh" appends="YES" id="2MY-cc-T6o"/>
                                         </connections>
                                     </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="i7V-5v-Sr1" userLabel="Bottom Text Field">
+                                        <rect key="frame" x="0.0" y="483" width="375" height="48"/>
+                                        <gestureRecognizers/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="40"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="uZF-nn-vNR" appends="YES" id="KkS-E3-fpc"/>
+                                        </connections>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="ACF-BP-4s1" firstAttribute="top" secondItem="7qi-R2-bV4" secondAttribute="bottom" constant="-50" id="1EM-nE-yhA"/>
+                                    <constraint firstItem="ACF-BP-4s1" firstAttribute="top" secondItem="7qi-R2-bV4" secondAttribute="bottom" constant="-80" id="1EM-nE-yhA"/>
                                     <constraint firstItem="ACF-BP-4s1" firstAttribute="centerX" secondItem="JZe-no-cwJ" secondAttribute="centerX" id="1Uc-5V-hNh"/>
+                                    <constraint firstItem="i7V-5v-Sr1" firstAttribute="width" secondItem="ACF-BP-4s1" secondAttribute="width" id="4lx-8x-TXq"/>
+                                    <constraint firstItem="i7V-5v-Sr1" firstAttribute="top" secondItem="ACF-BP-4s1" secondAttribute="bottom" constant="-80" id="6J3-Dq-C8t"/>
                                     <constraint firstItem="ACF-BP-4s1" firstAttribute="width" secondItem="JZe-no-cwJ" secondAttribute="width" priority="750" id="GFV-J9-c1O"/>
                                     <constraint firstItem="ACF-BP-4s1" firstAttribute="height" secondItem="JZe-no-cwJ" secondAttribute="height" priority="750" id="LBK-sI-OO6"/>
                                     <constraint firstItem="ACF-BP-4s1" firstAttribute="height" relation="lessThanOrEqual" secondItem="JZe-no-cwJ" secondAttribute="height" id="Qtx-Uc-CnQ"/>
                                     <constraint firstItem="7qi-R2-bV4" firstAttribute="centerX" secondItem="ACF-BP-4s1" secondAttribute="centerX" id="bby-tn-M5j"/>
+                                    <constraint firstItem="i7V-5v-Sr1" firstAttribute="centerX" secondItem="JZe-no-cwJ" secondAttribute="centerX" id="bzy-kS-19A"/>
                                     <constraint firstItem="ACF-BP-4s1" firstAttribute="width" relation="lessThanOrEqual" secondItem="JZe-no-cwJ" secondAttribute="width" id="mh7-oV-Sis"/>
                                     <constraint firstItem="7qi-R2-bV4" firstAttribute="width" secondItem="ACF-BP-4s1" secondAttribute="width" id="uTy-a3-Gj2"/>
                                     <constraint firstItem="ACF-BP-4s1" firstAttribute="centerY" secondItem="JZe-no-cwJ" secondAttribute="centerY" id="urN-SN-nzL"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="i7V-5v-Sr1" userLabel="Bottom Text Field">
-                                <rect key="frame" x="-0.5" y="473" width="375" height="48"/>
-                                <gestureRecognizers/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="40"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="uZF-nn-vNR" appends="YES" id="KkS-E3-fpc"/>
-                                </connections>
-                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="jMk-Sr-pgV">
                                 <rect key="frame" x="0.0" y="627" width="375" height="40"/>
                                 <constraints>
@@ -352,9 +352,6 @@
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="i7V-5v-Sr1" firstAttribute="centerX" secondItem="ACF-BP-4s1" secondAttribute="centerX" id="0S3-Nj-5DO"/>
-                            <constraint firstItem="i7V-5v-Sr1" firstAttribute="width" secondItem="ACF-BP-4s1" secondAttribute="width" id="3rA-jc-SVT"/>
-                            <constraint firstItem="i7V-5v-Sr1" firstAttribute="top" secondItem="ACF-BP-4s1" secondAttribute="bottom" constant="-60" id="BK0-fD-Zvc"/>
                             <constraint firstItem="jMk-Sr-pgV" firstAttribute="leading" secondItem="jrS-6C-Db8" secondAttribute="leading" id="b1V-E5-oaJ"/>
                             <constraint firstItem="JZe-no-cwJ" firstAttribute="top" secondItem="rAy-6a-qv1" secondAttribute="bottom" id="jRu-00-XYv"/>
                             <constraint firstAttribute="trailing" secondItem="jMk-Sr-pgV" secondAttribute="trailing" id="jwB-3H-sae"/>
@@ -378,7 +375,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bottomTextField" destination="i7V-5v-Sr1" id="XBq-Cm-to4"/>
-                        <outlet property="bottomTextFieldConstrain" destination="BK0-fD-Zvc" id="chv-R1-vTJ"/>
+                        <outlet property="bottomTextFieldConstrain" destination="6J3-Dq-C8t" id="FuR-sD-xEL"/>
                         <outlet property="memeImageView" destination="ACF-BP-4s1" id="HXd-EG-eGW"/>
                         <outlet property="shareMemeButton" destination="7LB-Ln-kIC" id="icX-cz-xaY"/>
                         <outlet property="takePhotoButton" destination="ifq-MJ-qcy" id="pue-UK-CAT"/>
